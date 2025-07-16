@@ -1,3 +1,8 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-6 py-20">
@@ -11,12 +16,12 @@ export default function HomePage() {
           BoostMyReferral connects job seekers with industry professionals who offer real referrals, guidance, and mentorship.
         </p>
 
-        <a
+        <Link
           href="/boosters"
           className="inline-block mt-8 bg-blue-600 text-white text-lg font-semibold px-6 py-3 rounded-xl shadow-md hover:bg-blue-700 transition"
         >
           🚀 Explore Boosters
-        </a>
+        </Link>
       </section>
 
       {/* Optional Profile/Preview Section */}
@@ -25,16 +30,17 @@ export default function HomePage() {
           Meet Top Boosters
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-          {/* Static previews (you can replace with dynamic later) */}
           {[1, 2, 3].map((id) => (
             <div
               key={id}
               className="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition text-center"
             >
-              <img
+              <Image
                 src={`https://i.pravatar.cc/100?img=${id * 2}`}
                 alt="Booster"
-                className="w-20 h-20 rounded-full mx-auto"
+                width={80}
+                height={80}
+                className="rounded-full mx-auto"
               />
               <h3 className="mt-4 font-semibold text-lg text-gray-800">Booster #{id}</h3>
               <p className="text-gray-500 text-sm">Amazon · SDE</p>

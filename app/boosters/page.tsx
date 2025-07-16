@@ -1,6 +1,7 @@
 import { connectToDB } from '@/lib/mongodb';
 import Booster from '@/models/Booster';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface BoosterType {
   _id: string;
@@ -32,19 +33,21 @@ export default async function BoostersPage() {
             >
               <div className="flex flex-col items-center">
                 <Image
-  src={booster.profileImage || '/default-avatar.png'}
-  alt={booster.name}
-  width={100}
-  height={100}
-  className="rounded-full object-cover"
-/>
+                  src={booster.profileImage || '/default-avatar.png'}
+                  alt={booster.name}
+                  width={100}
+                  height={100}
+                  className="rounded-full object-cover"
+                />
                 <h2 className="mt-4 text-xl font-semibold text-gray-800 text-center">
                   {booster.name}
                 </h2>
                 <p className="text-gray-600 text-sm text-center">
                   {booster.role} @ {booster.company}
                 </p>
-                <p className="text-gray-500 text-xs">{booster.experience} yrs experience</p>
+                <p className="text-gray-500 text-xs">
+                  {booster.experience} yrs experience
+                </p>
               </div>
 
               <div className="mt-4 flex justify-around text-sm text-gray-700">
@@ -62,12 +65,12 @@ export default async function BoostersPage() {
                 </div>
               </div>
 
-              <a
+              <Link
                 href={`/boosters/${booster._id}`}
                 className="mt-6 block text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
               >
                 View Profile →
-              </a>
+              </Link>
             </div>
           ))}
         </div>

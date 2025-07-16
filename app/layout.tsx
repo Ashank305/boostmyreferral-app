@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,11 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white text-gray-900`}>
-        {/* ⬆️ Polished Header */}
+        {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-50 border-b bg-white/80 backdrop-blur-md shadow-sm">
           <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
             {/* Logo + Brand */}
-            <a href="/" className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center gap-2 group">
               <Image
                 src="/boostmyreferral-logo.png"
                 alt="BoostMyReferral Logo"
@@ -32,22 +33,22 @@ export default function RootLayout({
               <span className="text-xl sm:text-2xl font-bold text-blue-600 group-hover:text-blue-700 transition">
                 BoostMyReferral
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Nav */}
             <nav className="hidden sm:flex space-x-6 text-sm font-medium text-gray-700">
-              <a
+              <Link
                 href="/"
                 className="hover:text-blue-600 hover:underline underline-offset-4 transition"
               >
                 Home
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/boosters"
                 className="hover:text-blue-600 hover:underline underline-offset-4 transition"
               >
                 View Boosters
-              </a>
+              </Link>
               <a
                 href="#about"
                 className="hover:text-blue-600 hover:underline underline-offset-4 transition"
@@ -58,7 +59,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        {/* Content Area */}
+        {/* Content */}
         <main className="pt-24">{children}</main>
 
         {/* Footer */}
