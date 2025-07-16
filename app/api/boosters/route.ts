@@ -7,7 +7,7 @@ export async function GET() {
     await connectToDB();
     const boosters = await Booster.find({});
     return NextResponse.json(boosters);
-  } catch (error) {
-    return NextResponse.json({ error: 'Failed to fetch boosters' }, { status: 500 });
-  }
+  } catch {
+  return NextResponse.json({ message: 'Failed to create booster' }, { status: 500 });
+}
 }

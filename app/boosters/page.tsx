@@ -1,22 +1,19 @@
 import { connectToDB } from '@/lib/mongodb';
 import Booster from '@/models/Booster';
 import Image from 'next/image';
-import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-interface BoosterType {
-  _id: string;
-  name: string;
-  company: string;
-  role: string;
-  experience: number;
-  profileImage?: string;
-  referralsMade: number;
-  sessionsTaken: number;
+interface PageProps {
+  params: {
+    id: string;
+  };
 }
 
-export default async function BoostersPage() {
+export default async function BoosterProfile({ params }: PageProps) {
   await connectToDB();
-  const boosters: BoosterType[] = await Booster.find().lean();
+  const booster = await Booster.findById(params.id).lean();
+
+  if (!booster) return notFound();
 
   return (
     <main className="min-h-screen bg-gray-50 py-12 px-6">
