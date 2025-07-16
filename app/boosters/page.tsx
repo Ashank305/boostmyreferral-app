@@ -2,6 +2,8 @@ import { connectToDB } from '@/lib/mongodb';
 import Booster from '@/models/Booster';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+
 
 interface PageProps {
   params: {
@@ -63,11 +65,11 @@ export default async function BoosterProfile({ params }: PageProps) {
               </div>
 
               <Link
-                href={`/boosters/${booster._id}`}
-                className="mt-6 block text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
-              >
-                View Profile →
-              </Link>
+  href={`/boosters/${booster._id}`}
+  className="mt-6 block text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition"
+>
+  View Profile →
+</Link>
             </div>
           ))}
         </div>
